@@ -1,0 +1,13 @@
+{
+  "name": "ksf-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/KMUTT-STAFF-FITNESS/ksf-api.git",
+  "author": "Farmez <thinnapat.2542@mail.kmutt.ac.th>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql": "^2.18.1"
+  }
+}
