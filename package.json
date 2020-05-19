@@ -1,7 +1,7 @@
 {
   "name": "ksf-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "repository": "https://github.com/KMUTT-STAFF-FITNESS/ksf-api.git",
   "author": "Farmez <thinnapat.2542@mail.kmutt.ac.th>",
   "license": "MIT",
@@ -9,11 +9,12 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "knex": "^0.21.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   }
 }

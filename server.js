@@ -27,3 +27,14 @@ app.post("/users", (req, res) => {
   users.push(req.body);
   res.status(201).json(req.body);
 });
+
+app.put('/users/:id', (req,res) => {
+  const updateIndex = users.findIndex(user => user.member_id === req.params.id)
+  res.json(Object.assign(users[updateIndex], req.body))
+})
+
+app.delete('/users/:id', (req,res) => {
+  const deleteIndex = users.findIndex(user => user.member_id === req.params.id)
+  users.splice(deleteIndex,1)
+  res.status(204).send
+})
