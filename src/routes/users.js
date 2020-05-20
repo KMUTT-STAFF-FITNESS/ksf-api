@@ -9,4 +9,12 @@ router.get("/users", (req, res) => {
   });
 });
 
+router.get("/users/:id", (req, res) => {
+  queries.users.getById(req.params.id).then((user) => res.json(user));
+});
+
+router.post("users", (req, res) => {
+  queries.users.createUser(req.body).then((result) => res.send(result));
+});
+
 module.exports = router;
