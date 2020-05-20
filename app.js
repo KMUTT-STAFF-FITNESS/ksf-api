@@ -1,16 +1,34 @@
-const express = require('express')
-const bodyParser = require('body-parser')
+const express = require("express");
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const LdapStrategy = require("passport-ldapauth");
+const fs = require("fs");
 
-const app = express()
+const OPTS = {
+  server: {
+    url: "ldaps://ld0620.sit.kmutt.ac.th/",
+    bindDN: "ou=People,ou=st,dc=sit,dc=kmutt,dc=ac,dc=th",
+    bindCredentials: "secret",
+    searchBase: "dc=sit,dc=kmutt,dc=ac,dc=th",
+    searchFilter: "(&(uid={{username}})(password={{password}}))",
+    tlsOptions: {
+      ca: [fs.readFileSync("./cacert.pem")],
+    },
+  },
+};
+passport.use(new LdapStrategy(OPTS));
 
-app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json())
+const app = express();
 
-const users = require('./src/routes/users')
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(passport.initialize());
 
-app.use(users)
+const users = require("./src/routes/users");
 
-const port = process.env.PORT || 8000
+app.use(users);
+
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
-    console.log(`Listen on ${port}`)
-})
+  console.log(`Listen on ${port}`);
+});

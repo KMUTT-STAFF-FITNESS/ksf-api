@@ -4,6 +4,7 @@ exports.up = function(knex) {
         table.increments('member_id')
         table.string('username',50)
         table.string('password',50)
+        table.string('role_id',50)
     })
 };
 
